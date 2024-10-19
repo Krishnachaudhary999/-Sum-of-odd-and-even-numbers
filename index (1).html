@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Odd and Even Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Sum of Odd and Even Numbers</h1>
+<input type="number" id="numberInput" placeholder="Enter a number">
+<button onclick="sumOddEven()">Calculate Sums</button>
+<p id="result"></p>
+
+<script>
+    function sumOddEven() {
+        const input = parseInt(document.getElementById('numberInput').value);
+        const result = document.getElementById('result');
+
+        let sumOdd = 0;
+        let sumEven = 0;
+        let oddNumbers = [];
+        let evenNumbers = [];
+
+        for (let i = 1; i <= input; i++) {
+            if (i % 2 === 0) {
+                sumEven += i;
+                evenNumbers.push(i);
+            } else {
+                sumOdd += i;
+                oddNumbers.push(i);
+            }
+        }
+
+        let oddDetails = oddNumbers.join(' + ') + ' = ' + sumOdd;
+        let evenDetails = evenNumbers.join(' + ') + ' = ' + sumEven;
+
+        // Combining the results into one string and then assigning it to result.textContent
+        result.innerHTML = `Answer: Sum of Odd = ${sumOdd}, Sum of Even = ${sumEven} <br> (N = ${input}: ${oddDetails}) and (N = ${input}: ${evenDetails})`;
+    }
+</script>
+
+</body>
+</html>
+
